@@ -3,6 +3,16 @@ import requests
 from telegram.ext import Updater, MessageHandler, Filters, Handler
 
 
+""" keep app alive on heroku """
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Telerem'
+
+
 REMNOTE_API_URL_CREATE = 'https://api.remnote.io/api/v0/create'
 REMNOTE_DOC_URL = 'https://www.remnote.io/document/'
 REMNOTE_API_KEY = os.getenv('REMNOTE_API_KEY')
@@ -35,3 +45,5 @@ handler = MessageHandler(Filters.all, create_inbox_rem)
 updater.dispatcher.add_handler(handler)
 updater.start_polling()
 updater.idle()
+
+
