@@ -1,1 +1,1 @@
-web: python telerem.py
+worker: python telerem.py
