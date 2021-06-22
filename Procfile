@@ -1,1 +1,1 @@
-worker: python telerem.py
+worker: sh run.sh
