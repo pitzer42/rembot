@@ -15,7 +15,7 @@ def attach(app):
         chat = update.effective_chat.id
         receiver = context.bot
         event = MessageReceived(text, chat, receiver)
-        app.notify(event)
+        app.events.notify(event)
     
     updater = Updater(TELEGRAM_BOT_TOKEN)
     handler = MessageHandler(Filters.all, handle)

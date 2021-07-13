@@ -12,6 +12,7 @@ def attach(app):
     pass
 
 def create_rem(parent, text):
+    print('createt_rem')
     request_data = dict(
         apiKey=REMNOTE_API_KEY,
         userId=REMNOTE_USER_ID,

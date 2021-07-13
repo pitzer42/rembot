@@ -4,14 +4,17 @@ class EventBus:
         self._events = dict()
     
     def on(self, event, action):
+        print(event)
         if event not in self._events:
             self._events[event] = set()
         self._events[event].add(action)
 
-    def notify(self, event, *args, **kwargs):
-        if event not in self._events:
+    def notify(self, event):
+        event_type = type(event)
+        print(event_type)
+        if event_type not in self._events:
             return
-        for action in self._events[event]:
+        for action in self._events[event_type]:
             action(event)
 
 
