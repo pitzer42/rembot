@@ -10,6 +10,6 @@ def attach(app):
     
     def reply_telegram_with_rem(message):
         rem_url = remnote.create_rem(INBOX_REM, message.text)
-        telegram.send_message(rem_url, message.chat)
+        telegram.send_message(rem_url, message.chat, message.receiver)
 
     app.on(telegram.events.MessageReceived, reply_telegram_with_rem)

@@ -27,7 +27,7 @@ class ServiceLocator:
         return self._services[key]
     
     def start(self):
-        for service in self._services.values:
+        for service in self._services.values():
             service.start(self)
 
 
