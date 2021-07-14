@@ -5,13 +5,26 @@ from rembot.services import telegram
 
 from rembot.services.telegram.events import MessageReceived
 
+INBOX_REM = os.environ['INBOX_REM']
 
-async def attach(app):
+_map_text_to_rem_url = dict()
 
-    INBOX_REM = os.environ['INBOX_REM']
-    
+async def attach(events):
+
     async def reply_telegram_with_rem(message):
-        rem_url = remnote.create_rem(INBOX_REM, message.text)
-        await telegram.send_message(rem_url, message.chat, message.receiver)
+        parent = INBOX_REM
+    
+        # reply with sub rem
+        if message.replies:
+            # replied to text, I need a URL
+            if message.replies in _map_text_to_rem_url:
+                reply_url = _map_text_to_rem_url[message.replies]
+                parent = remnote.parse_rem_id_from_url(reply_url)
+            elif '/' in message.replies:
+                parent = remnote.parse_rem_id_from_url(message.replies)
+        
+        rem_url = await remnote.create_rem(parent, message.text)
+        _map_text_to_rem_url[message.text] = rem_url
+        await telegram.reply_message(message.chat_id, message.message_id, rem_url)
 
-    app.events.on(MessageReceived, reply_telegram_with_rem)
+    events.on(MessageReceived, reply_telegram_with_rem)
