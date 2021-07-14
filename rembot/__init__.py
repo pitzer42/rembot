@@ -12,6 +12,7 @@ class EventBus:
     def notify(self, event):
         event_type = type(event)
         print(event_type)
+        print(self._events)
         if event_type not in self._events:
             return
         for action in self._events[event_type]:
