@@ -23,8 +23,9 @@ async def attach(events):
             elif '/' in message.replies:
                 parent = remnote.parse_rem_id_from_url(message.replies)
         
-        rem_url = await remnote.create_rem(parent, message.text)
+        rem_url = await remnote.create(parent, message.text)
         _map_text_to_rem_url[message.text] = rem_url
         await telegram.reply_message(message.chat_id, message.message_id, rem_url)
+        print(f'chat_id={message.chat_id}')
 
     events.on(MessageReceived, reply_telegram_with_rem)
