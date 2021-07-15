@@ -4,7 +4,7 @@ from datetime import datetime
 from collections import namedtuple
 
 
-_TICK = 30
+_TICK = 60
 _calendar = list()
 
 

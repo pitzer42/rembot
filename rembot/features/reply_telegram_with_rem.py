@@ -5,9 +5,10 @@ from rembot.services import telegram
 from rembot.services.telegram.events import MessageReceived
 
 
-async def attach(events):
+INBOX_REM = 'q5MhuXuBri2tn4qc5'
 
-    INBOX_REM = 'q5MhuXuBri2tn4qc5'
+
+async def attach(events):
 
     async def rem_id_from_message(message):
         if message.replies:
