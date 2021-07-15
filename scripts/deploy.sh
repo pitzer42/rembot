@@ -6,7 +6,9 @@ git add --all
 git commit -m 'heroku deploy'
 git push heroku
 
-#heroku logs --tail
+heroku ps:scale worker=1
+
+heroku logs --tail
 
 # Create Config Vars
 # ex.: heroku config:set GITHUB_USERNAME=joesmith

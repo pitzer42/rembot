@@ -9,7 +9,7 @@ from rembot.features import reply_telegram_with_rem
 from rembot.features import wip_daily_remainder
 
 
-services = scheduler, telegram, remnote, heroku_keep_alive
+services = scheduler, telegram, remnote#, heroku_keep_alive
 features = reply_telegram_with_rem, wip_daily_remainder
 
 run(services, features)
