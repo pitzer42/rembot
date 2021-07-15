@@ -1,7 +1,7 @@
 heroku create rembot
 heroku git:remote -a rembot
 
-git checkout main
+#git checkout main
 git add --all
 git commit -m 'heroku deploy'
 git push heroku
