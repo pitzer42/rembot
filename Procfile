@@ -1,1 +1,1 @@
-worker: sh scripts/run.sh
+worker: sh /app/scripts/run.sh

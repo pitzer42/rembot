@@ -32,5 +32,5 @@ async def attach(events):
         message = HEADER + bullet_list
         await telegram.send_message(message)
 
-    entry = ScheduledFunc(send_rems_tagged_to_remaind)
+    entry = ScheduledFunc(send_rems_tagged_to_remaind, hour=9)
     scheduler.schedule(entry)
