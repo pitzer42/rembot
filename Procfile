@@ -1,1 +1,1 @@
-worker: sh scripts/run.sh
+worker: source scripts/run.sh
