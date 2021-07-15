@@ -1,1 +1,1 @@
-worker: sh /app/scripts/run.sh
+worker: python app.py
