@@ -1,11 +1,18 @@
 import asyncio
 
-from rembot.services import telegram
+from datetime import datetime
+
+from rembot.services import scheduler
 
 
 async def attach(events):
 
-    while True:
-        await asyncio.sleep(10)
-        #telegram.send_message(0, 'ping')
+    async def ping():
         print('ping')
+    
+    async def pong():
+        print('pong')
+
+    past = datetime.now()
+    scheduler.schedule(ping, past, repeat=scheduler.ASAP * 8)
+    scheduler.schedule(pong, past, repeat=scheduler.ASAP * 4)

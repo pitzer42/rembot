@@ -23,9 +23,7 @@ async def attach(events):
         event = MessageReceived(chat_id, message_id, text, replies)
         await events.notify(event)
 
-    loop = asyncio.get_event_loop()
-    loop.create_task(_dispatcher.start_polling())
-    #executor.start_polling(_dispatcher, skip_updates=True)
+    asyncio.create_task(_dispatcher.start_polling())
 
 
 async def send_message(chat_id, text):
