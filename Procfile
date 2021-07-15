@@ -1,1 +1,1 @@
-worker: sh scripts/run.sh
+worker: echo foooooooo
