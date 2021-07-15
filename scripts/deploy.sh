@@ -1,7 +1,7 @@
 heroku login -i
 
-heroku create rembot
-heroku git:remote -a rembot
+heroku create rembot rembot-dev
+heroku git:remote -a rembot-dev
 
 #git checkout main
 git add --all
