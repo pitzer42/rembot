@@ -1,2 +1,2 @@
 tasks:
-  - init: sh init.sh
+  - init: source scripts/dev.sh

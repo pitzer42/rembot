@@ -1,3 +1,5 @@
+heroku login -i
+
 heroku create rembot
 heroku git:remote -a rembot
 
