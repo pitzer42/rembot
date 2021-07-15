@@ -12,7 +12,7 @@ from rembot.services.scheduler import ScheduledFunc
 REMAIND_TAG = 'WIP'
 HEADER = "Good Morning! 🌞☕\nThis is your work in progress:\n"
 BULLET_TEMPLATE = ' • {0}'
-TIMEZONE = timedelta(hours=-3)
+UTC_HOUR=9
 
 
 async def attach(events):
@@ -32,5 +32,5 @@ async def attach(events):
         message = HEADER + bullet_list
         await telegram.send_message(message)
 
-    entry = ScheduledFunc(send_rems_tagged_to_remaind, hour=9)
+    entry = ScheduledFunc(send_rems_tagged_to_remaind, minute=25)
     scheduler.schedule(entry)
