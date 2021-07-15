@@ -1,1 +1,1 @@
-worker: echo foo
+worker: python run.sh
