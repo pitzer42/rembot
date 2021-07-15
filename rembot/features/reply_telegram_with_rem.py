@@ -15,7 +15,8 @@ async def attach(events):
             if 'https://' in message.replies:
                 return remnote.rem_id_from_url(message.replies)
             else:
-                return remnote.get_by_name(message.replies)['remId']
+                rem = await remnote.get_by_name(message.replies)
+                return rem['_id']
         return INBOX_REM
 
     async def reply_telegram_with_rem(message):
