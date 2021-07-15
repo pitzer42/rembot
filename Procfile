@@ -1,1 +1,1 @@
-worker: echo foooooooo
+worker: echo foo
