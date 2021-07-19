@@ -34,19 +34,16 @@ def run(services, features):
     async def _run():
         events = EventBus()
 
-        print('enabling services', end='')
-        for service in services:
-            asyncio.create_task(service.enable(events))
-            print('.', end='')
-        print('ok')
+        print('starting services', end='', flush=False)
+        init_services = map(lambda s: s.start(events), services)
+        await asyncio.gather(*init_services)
+        print('...ok')
 
-        print('attaching features', end='')
-        for feature in features:
-            await feature.attach(events)
-            print('.', end='')
-        print('ok')
+        print('starting features', end='', flush=False)
+        init_features = map(lambda f: f.start(events), features)
+        await asyncio.gather(*init_features)
+        print('...ok')
 
-        print('running...')
         while True:
             await asyncio.sleep(1)
 

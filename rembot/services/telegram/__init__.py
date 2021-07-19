@@ -13,7 +13,7 @@ _bot = Bot(token=TELEGRAM_BOT_TOKEN)
 _dispatcher = Dispatcher(_bot)
 
 
-async def enable(events):
+async def start(events):
 
     @_dispatcher.message_handler()
     async def _notify(message):
@@ -24,7 +24,7 @@ async def enable(events):
         event = MessageReceived(chat_id, message_id, text, replies)
         await events.notify(event)
 
-    await _dispatcher.start_polling()
+    asyncio.create_task(_dispatcher.start_polling())
 
 
 async def send_message(text, chat_id=TELEGRAM_DEFAULT_CHAT_ID):
