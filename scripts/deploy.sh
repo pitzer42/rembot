@@ -6,7 +6,7 @@ git add --all
 git commit -m 'heroku deploy'
 git push heroku
 
-heroku ps:scale worker=1
+heroku ps:scale worker=1 --app rembot-dev
 
 heroku logs --tail
 
