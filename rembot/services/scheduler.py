@@ -9,7 +9,7 @@ TIMEZONE = 'America/Sao_Paulo'
 _scheduler = None
 
 
-async def start(events):
+async def enable(events):
     global _scheduler
     loop = asyncio.get_running_loop()
     _scheduler = AsyncIOScheduler(event_loop=loop)

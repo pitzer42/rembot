@@ -9,7 +9,7 @@ REMNOTE_API_KEY = os.environ['REMNOTE_API_KEY']
 REMNOTE_USER_ID = os.environ['REMNOTE_USER_ID']
 
 
-async def start(events):
+async def enable(events):
     pass
 
 

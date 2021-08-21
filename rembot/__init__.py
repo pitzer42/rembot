@@ -34,8 +34,8 @@ def run(services, features):
     async def _run():
         events = EventBus()
 
-        print('starting services', end='', flush=False)
-        init_services = map(lambda s: s.start(events), services)
+        print('enabling services', end='', flush=False)
+        init_services = map(lambda s: s.enable(events), services)
         await asyncio.gather(*init_services)
         print('...ok')
 

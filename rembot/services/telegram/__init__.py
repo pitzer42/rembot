@@ -13,7 +13,7 @@ _bot = Bot(token=TELEGRAM_BOT_TOKEN)
 _dispatcher = Dispatcher(_bot)
 
 
-async def start(events):
+async def enable(events):
 
     @_dispatcher.message_handler()
     async def _notify(message):
