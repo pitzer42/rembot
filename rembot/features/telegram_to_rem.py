@@ -23,6 +23,7 @@ async def start(events):
         text = message.text
         rem_url = await remnote.create(parent, text)
         message_id = message.message_id
+        print(f'telegram_to_rem: {text} {rem_url}')
         await telegram.reply_message(message_id, rem_url)
 
     events.on(MessageReceived, reply_telegram_with_rem)

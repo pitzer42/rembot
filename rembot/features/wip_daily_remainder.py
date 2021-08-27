@@ -24,6 +24,7 @@ async def start(events):
     async def send_rems_tagged_to_remaind():
         bullet_list = await bullet_list_for_tagged_rems(REMAIND_TAG)
         message = HEADER + bullet_list
+        print('wip_daily_remainder')
         await telegram.send_message(message)
 
     scheduler.schedule(send_rems_tagged_to_remaind, CRONTAB)

@@ -12,6 +12,6 @@ from rembot.features import wip_daily_remainder
 
 
 services = scheduler, telegram, remnote, twitter
-features = telegram_to_rem, tweet_to_rem, fav_to_rem, wip_daily_remainder
+features = telegram_to_rem, tweet_to_rem, wip_daily_remainder
 
 run(services, features)

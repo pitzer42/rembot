@@ -27,6 +27,7 @@ async def start(events):
         for user_id in TRACKED_TWITTER_USER_IDS:
             for fav in get_latest_favs(user_id):
                 rem = fav_to_rem_text(fav)
+                print(f'fav_to_rem: {rem}')
                 await remnote.create(INBOX_REM, rem)
 
     scheduler.schedule(create_rem_from_favs, CRONTAB)

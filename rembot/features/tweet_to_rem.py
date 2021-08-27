@@ -4,7 +4,7 @@ from rembot.services import scheduler
 
 INBOX_REM = 'q5MhuXuBri2tn4qc5'
 TRACKED_TWITTER_USER_IDS = ['1404389153941381121']
-CRONTAB = '0/5 * * * *'
+CRONTAB = '0 * * * *'
 _users_last_tweet = dict()
 
 
@@ -27,6 +27,11 @@ async def start(events):
         for user_id in TRACKED_TWITTER_USER_IDS:
             for tweet in get_latest_tweets(user_id):
                 rem = tweet_to_rem_text(tweet)
+                print(f'tweet_to_rem: {rem}')
                 await remnote.create(INBOX_REM, rem)
 
-    scheduler.schedule(create_rem_from_tweets, CRONTAB)
+    # ignore past tweets and track new ones
+    for user_id in TRACKED_TWITTER_USER_IDS:
+        get_latest_tweets(user_id)
+
+     scheduler.schedule(create_rem_from_tweets, CRONTAB)
