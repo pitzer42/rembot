@@ -15,8 +15,9 @@ async def start(events):
         tag = await remnote.get_by_name(tag_name)
         for child in tag['tagChildren']:
             child = await remnote.get(child)
-            child = child['nameAsMarkdown']
+            child = child['name']
             if len(child) > 0:
+                child = child[0]
                 child = BULLET_TEMPLATE.format(child)
                 children.append(child)
         return '\n'.join(children)
