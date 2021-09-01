@@ -34,4 +34,4 @@ async def start(events):
     for user_id in TRACKED_TWITTER_USER_IDS:
         get_latest_tweets(user_id)
 
-     scheduler.schedule(create_rem_from_tweets, CRONTAB)
+    scheduler.schedule(create_rem_from_tweets, CRONTAB)
